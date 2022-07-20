@@ -4,14 +4,17 @@ Conectar disco usb
 
 ### 1. Terminal ubuntu 20.04. Iniciar contenedor backup-rsync-ssh-alpine-docker.
 ```
-# cd ~/docker/backup && sudo su
-# --- chmod +x -v entrypoint.sh
-# --- docker build . -t backup
+cd Descargas
+git clone https://github.com/cparodif/backup-rsnapshot-rsync-ssh-alpine-docker.git
+cd backup-rsnapshot-rsync-ssh-alpine-docker
+sudo su
+chmod +x -v entrypoint.sh
+docker build . -t backup
 o
 ##### docker build . -t backup -f Dockerfile
 
-# docker-compose up -d 
-# docker-compose exec backup sh
+docker-compose up -d 
+docker-compose exec backup sh
 ```
 ahora tenemos terminal en alpine.
 
