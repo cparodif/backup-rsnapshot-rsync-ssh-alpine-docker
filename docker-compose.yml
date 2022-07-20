@@ -1,0 +1,95 @@
+version: "2.2"
+services:
+  backup:
+    container_name: backup
+    ports:
+      - "22:22"
+    volumes:
+      - /media/g4560/bc6b0d34-aac5-46b8-88a3-07c6c36fff6c/hd385/backup:/a00
+      - /home/g4560:/a01
+      - /a2021m07d14/hd400Gb/dePapa:/a02
+      - /a2021m07d14/hd400Gb/deMama:/a03
+      - /a2021m07d14/hd400Gb/deCarlos:/a04
+      - /a2021m07d14/hd400Gb/deAna:/a05
+
+
+    build: 
+       context: .
+       dockerfile: ./Dockerfile
+    image: backup
+    stdin_open: true            # docker run -i
+    tty: true                   # docker run -t
+                                ##    restart: always
+
+    networks:
+       containers:
+         ipv4_address: 172.20.0.2
+
+networks:
+  containers:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+
+       
+       
+
+# cd ~/docker/bac && sudo su
+# --- chmod +x -v entrypoint.sh
+# --- docker build . -t backup
+##### docker build . -t backup -f Dockerfile
+# docker-compose up -d 
+# docker-compose exec backup sh
+# ---- terminal alpine
+# ---- cat /info.txt
+# ---- terminal ubuntu
+####### ssh root@localhost 
+## ----- pas=toor
+# ---- terminal alpine
+# rsnapshot configtest
+# rsnapshot du
+# rsnapshot -t dia
+# rsnapshot -V dia
+# rsnapshot diff dia.0 dia.1
+# du -sh /a00/*
+# docker-compose pause
+
+# rsync --progress -avhe ssh /a2021m07d14/hd400Gb/dePapa/2022-06-06-S9/ root@192.168.210.11:/snapshot/2022-06-06-S9/
+
+## **********************************************
+# nuevo terminal
+# cd ~/docker/asrr && sudo su
+# docker run -d -p 22:22 -v /media/g4560/bc6b0d34-aac5-46b8-88a3-07c6c36fff6c1/hd385/snapshot:/snapshot asrr
+# o
+# docker start e41
+# docker stop e41
+
+# docker run -d -p 22:22 -v /home/g4560/backups:/bckps asr
+# nuevo terminal
+# ---- docker ps 
+# ---- docker exec -it 69b sh
+# ---- terminal alpine
+# ---- cat /info.txt
+# ---- terminal ubuntu
+# ---- ssh root@192.168.210.11
+# ---- ssh-keygen -f "/root/.ssh/known_hosts" -R "192.168.210.11"
+# Hacer copias
+# rsync --progress -avhe ssh /home/g4560/docker/ root@192.168.210.11:/snapshot/docker/
+# rsync --progress -avhe ssh /a2021m07d14/hd400Gb/dePapa/2022-06-06-S9/ root@192.168.210.11:/snapshot/2022-06-06-S9/
+# docker stop E41
+# revisar https://github.com/ragoal/alpine-sshd-container
+
+# comparar original y copia con meld
+# docker-compose up -d
+# ssh-keygen -f "/root/.ssh/known_hosts" -R "192.168.210.11"
+# ssh root@192.168.210.11
+# rsnapshot -t dia 
+# du -sh /snapshot/*
+# rsnapshot  dia
+# du -sh /snapshot/*
+# cd  /snapshot
+# ls -alh /snapshot
+# du -sh *
+# ls - Rlahi
+# mc 
+# situar en fichero a la izda en dcha info se ve el numero de links
